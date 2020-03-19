@@ -1,0 +1,82 @@
+#23 okt
+ir-sensor halvveis ferdig
+adc drivere skrevet
+#25 okt
+Får bare 2 V fra den forbanne IR-sensoren når de er langt unna hverandre, men
+ellers funker det fint.
+
+#2. Nov
+- Solenoide driver er satt opp og fungerer som den skal med touch knapp
+- Må koble om strømforsyning slik at arduino får strøm fra den andre kretsen isteden for fra
+ USB evt. fra en separat PSU - har prøvd men får ikke nok spenning ut av arduino etterpå
+ - Fikse OLED update med time interrupt
+ - OLED glitcher litt til tider
+ - Encoder på Lab plass 8 brettet fungerer ikke (viser kun 0??)
+ - Fiks^ Så fortsette på PI regulator
+
+
+#6. Nov
+ADC interrupt funker ikke i det hele tatt
+ - Test med å legge til sei() i slutten eller starten av alle init funksjoner som enabler interrupts
+ - Burde også teste med å kommentere ut alt med interrupts fra node 2 bortsett fra ADC interrupt for å sjekke at det ikke er noe med de andre interruptsene som fucker med adc_interrupt vectoren.
+
+
+#8. Nov
+IR - logikken fungerer
+ADC med interrupts fungerer
+CAN meldinger begge veier med interrupt fungerer
+Menysystemet fungerer
+
+#9. Nov
+  - Arduino fucked? noo
+  - Motorbux fucked? nop
+  - Klarer ikke enbale motor - Får bare 2V ut fra arduino.
+
+#12. Nov
+  - la inn delay på CAN_send på node1 for at det ikke skal fucke seg
+  - fjernet printf flere steder fordi det fucket opp alt
+  - implementert pid-regulator m/ slider . men pådragsverdiene er veldig s
+
+
+
+#15 Nov
+- SLIDER og JOYSTICK har nå uint8_t  som posisjon, bør fungere fint
+
+#########################
+
+  #TO DO
+  DONE - Solenoide extension time
+  DONE - Slider: left og right er byttet om
+  DONE - OLED: Timer update screen
+  DONE - Disable motor on reset - slik at den ikke kjører av seg selv
+  DONE - Highscore
+  DONE - Difficulty
+  DONE - Stopp musikk før spillet begynner!!!
+  DONE - Fikse Death tresh
+  DONE - Fjerne testtegn
+  Doxygen - legge til slider der det gjelder
+  SIA KABLING
+
+  - Koble alle tomme pins til enten jord eller Vcc
+  - Avlastningskondensatorer på alle ICs . Inkludert mini breadboard.
+  - 2 spenningskilder ?
+  - egen fargekode på analoge?
+
+  - Les tips på alle oppgaver.
+
+
+
+
+##########################
+~=EXTRAS=~
+- SRAM Dual buffering med interrupts. Oled laster kun inn når noe har endret seg.
+- Styrer med slider og joystick samtidig
+- Joystick auto-kalibrering med digitalt filter
+- Interrupts med ADC - (Node1)
+- PID: Interrupts med fast frekvens, Node2
+
+- Highscore lagres i EEPROM
+- Valgfri vansklighetsgrad - endrer PID variable
+- Spill som benytter full OLED-oppløsning, slider og joystick inputs.
+- Musikk - Bruker Can buss til å starte/stoppe musikk og velge sang
+- Dokumentasjon gjennom Doxygen

@@ -1,0 +1,28 @@
+CAN MESSAGE ID
+  0 = MODE
+      data = 0: stop pingpong
+      data = 1: play pingpong
+
+      data = 8: run menu;
+
+  1 = Joystick_msg
+    1.0 = X
+    1.1 = Y
+    1.2 = Slider right button
+
+  2 = Slider_msg
+    2.0 = Right slider (0 - 255)
+    2.1 = Left slider (0 - 255)
+    2.2 = Right button
+
+  3 = Difficulty
+    3.0 = easy
+    3.1 = hard
+
+
+    6 = DUMMY
+
+
+  7 = Play/Stop
+    7.0 = 0 ->stop
+    7.0 = 1 ->play
